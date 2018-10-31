@@ -44,9 +44,10 @@
 	
 		if($line_read != null){		
 			
-			$line_read = substr($line_read, 0, 14);
-				
+			$line_read = substr($line_read, 2, 14);
+							
 			connect($proxy[$i]);
+
 		}	
 	}
 
