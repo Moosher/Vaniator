@@ -47,13 +47,7 @@
 		if($line_read{1} == 1){		
 			
 			$line_read = substr($line_read, 2, 14);
-			$line_validation = $line_read;
-
-			$line_validation = substr($line_validation, 0,2) . "." . substr($line_validation, 2,3) . "." . 
-			substr($line_validation, 5,3) . "/" . substr($line_validation, 8,4) . "-" . substr($line_validation, 12);
-
-
-				
+							
 			connect($proxy[$i]);
 
 		}	
