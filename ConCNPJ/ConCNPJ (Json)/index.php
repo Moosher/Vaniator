@@ -1,9 +1,9 @@
 <?php
 
-	ini_set('memory_limit', '512M'); 
 	$cnpj_list = fopen("CNPJ_SC.txt", "r") or die ("Não foi possível abrir o arquivo");	
 	$json = fopen("results.json", "w");
 	
+	$count = 0;
 	$proxy = [];
     $proxy[0] = "";
     $proxy[1] = "18.228.118.69:8080";
@@ -36,35 +36,25 @@
     $proxy[28] = "186.212.112.171:20183";
     $proxy[29] = "170.79.31.7:21776";
     $proxy[30] = "168.194.153.52:21776";    
-
-
+	
 	$i = 0;
-
 	while(!feof($cnpj_list)){
 		
 		$line_read = fgets($cnpj_list);
 	
-		if($line_read{1} == 1){		
+		if($line_read != null){		
 			
-			$line_read = substr($line_read, 2, 14);
-			$line_validation = $line_read;
-
-			$line_validation = substr($line_validation, 0,2) . "." . substr($line_validation, 2,3) . "." . 
-			substr($line_validation, 5,3) . "/" . substr($line_validation, 8,4) . "-" . substr($line_validation, 12);
-
-			$validacao = null;
-			if($validacao == null){
+			$line_read = substr($line_read, 0, 14);
 				
-				connect($proxy[$i]);
-			}
+			connect($proxy[$i]);
 		}	
 	}
- 
+
 	function connect($proxyC){
 
 		$url = 'https://www.receitaws.com.br/v1/cnpj/';
 
-		global $i, $line_read, $proxy , $json; 
+		global $i, $line_read, $proxy , $json, $count; 
 
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL,$url . $line_read);
@@ -76,6 +66,8 @@
 		if($retorno_json != null){
 
 			fwrite($json, $retorno_json);
+
+			echo "<pre>". $count++ . "</pre>";
 			
 			$i++;
 			if($i > 30){
@@ -84,7 +76,6 @@
 			
 			flush();
 			ob_flush();	
-			sleep(1);		
 		
 		}else{
 
