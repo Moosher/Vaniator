@@ -52,11 +52,10 @@
 			$line_validation = substr($line_validation, 0,2) . "." . substr($line_validation, 2,3) . "." . 
 			substr($line_validation, 5,3) . "/" . substr($line_validation, 8,4) . "-" . substr($line_validation, 12);
 
-			$validacao = null;
-			if($validacao == null){
+
 				
-				connect($proxy[$i]);
-			}
+			connect($proxy[$i]);
+
 		}	
 	}
  
