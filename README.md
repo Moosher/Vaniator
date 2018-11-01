@@ -10,5 +10,5 @@ ja com o mongo vai ser necessario instalar o banco local e configurar o php.ini 
 Deixei anexo o php.ini com algumas mudanças necessarias para rodar o programa (em qualquer uma das versões), 
 por conta do tempo de execução e consumo de memória serem rasoavelmente altos
 
-Lembrando que esse script a meses atras, e por isso o proxys provavelmente estão mortos :P,
+Lembrando que escrevi esse script a meses atras, e por isso o proxys provavelmente estão mortos :P,
 para um uso 100% seria necessario que o usuario colocasse novos proxys no array do index.php, mas sempre deixando a pos [0] vazia.
